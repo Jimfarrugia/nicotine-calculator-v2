@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import HeroBanner from "./components/HeroBanner";
 
 function App() {
   return (
     <div className="App">
-      Hello World!
+      <HeroBanner />
     </div>
   );
 }
