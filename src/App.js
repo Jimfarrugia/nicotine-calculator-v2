@@ -1,14 +1,13 @@
 import React from "react";
 import HeroBanner from "./components/HeroBanner";
-import ImgMolecule from "./components/ImgMolecule";
-import Button from "@material-ui/core/Button";
+import CalculatorForm from "./components/CalculatorForm";
 
 function App() {
 
   return (
     <div className="App">
       <HeroBanner />
-      <ImgMolecule />
+      <CalculatorForm />
     </div>
   );
 }
