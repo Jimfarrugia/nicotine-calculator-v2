@@ -21,7 +21,7 @@ export class Introduction extends Component {
         </Grid>
         <Grid item xs={7} style={styledGridItem}>
           <Typography variant="body1" align="left" paragraph>
-            This is a simple tool which calculates how much liquid nicotine to
+            Easy Nicotine Calculator is a simple tool which calculates how much liquid nicotine to
             add to your eLiquid in order to reach your desired nicotine
             strength.
           </Typography>

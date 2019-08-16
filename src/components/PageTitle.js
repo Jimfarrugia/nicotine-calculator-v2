@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   pageTitle: {
-    backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(4),
     lineHeight: 1.5
   }
