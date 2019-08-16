@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/styles";
 import { Button, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
-const styledGridItem = {
-  padding: "1.5rem"
-};
-const styledButton = {
-  margin: "1rem 0.5rem 0 0"
-};
+const styles = () => ({
+  GridItem: {
+    padding: "1.5rem"
+  },
+  Button: {
+    margin: "1rem 0.5rem 0 0"
+  },
+});
 
 export class Results extends Component {
   back = e => {
@@ -23,6 +26,7 @@ export class Results extends Component {
 
   render() {
     const {
+      classes,
       values: { baseStrength, batchSize, targetStrength }
     } = this.props;
 
@@ -31,7 +35,7 @@ export class Results extends Component {
 
     return (
       <>
-        <Grid item xs={6} style={styledGridItem}>
+        <Grid item xs={6} className={classes.GridItem}>
           <Typography variant="body2" align="left" paragraph>
             Your {batchSize}mL batch should contain {resultVolume}mL of your nicotine base in order to achieve your target strength of {targetStrength}mg.
           </Typography>
@@ -39,7 +43,7 @@ export class Results extends Component {
             {resultVolume}mL of nicotine liquid weighs approximately {resultWeight} grams.
           </Typography>
         </Grid>
-        <Grid item xs={6} style={styledGridItem}>
+        <Grid item xs={6} className={classes.GridItem}>
           <Typography variant="h4" align="left" paragraph>
             {resultVolume}mL
           </Typography>
@@ -50,7 +54,7 @@ export class Results extends Component {
             variant="contained"
             color="secondary"
             onClick={this.back}
-            style={styledButton}
+            className={classes.Button}
           >
             back
           </Button>
@@ -58,7 +62,7 @@ export class Results extends Component {
             variant="contained"
             color="primary"
             onClick={this.reset}
-            style={styledButton}
+            className={classes.Button}
           >
             reset
           </Button>
@@ -69,9 +73,10 @@ export class Results extends Component {
 }
 
 Results.propTypes = {
+  classes: PropTypes.object.isRequired,
   prevStep: PropTypes.func.isRequired,
   resetStep: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired
 };
 
-export default Results;
+export default withStyles(styles)(Results);

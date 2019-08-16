@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/styles";
 import { Button, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
-const styledGridItem = {
-  padding: "1.5rem"
-};
-const styledButton = {
-  margin: "1rem 0.5rem 0 0"
-};
-const styledTextField = {
-  margin: "0.5rem 0 0 0"
-};
+const styles = () => ({
+  GridItem: {
+    padding: "1.5rem"
+  },
+  Button: {
+    margin: "1rem 0.5rem 0 0"
+  },
+  TextField: {
+    margin: "0.5rem 0 0 0"
+  }
+});
 
 export class SetBatchSize extends Component {
   continue = e => {
@@ -27,10 +30,10 @@ export class SetBatchSize extends Component {
   };
 
   render() {
-    const { values, handleChange } = this.props;
+    const { values, handleChange, classes } = this.props;
     return (
       <>
-        <Grid item xs={6} style={styledGridItem}>
+        <Grid item xs={6} className={classes.GridItem}>
           <Typography variant="body2" align="left" paragraph>
             <strong>Batch size</strong> refers to the amount of eLiquid (in mL) you will be mixing. If you are mixing a full bottle, enter the bottle size.
           </Typography>
@@ -38,9 +41,9 @@ export class SetBatchSize extends Component {
             Enter your batch size in mL.
           </Typography>
         </Grid>
-        <Grid item xs={6} style={styledGridItem}>
+        <Grid item xs={6} className={classes.GridItem}>
           <TextField
-            style={styledTextField}
+            className={classes.TextField}
             label="Batch Size"
             onChange={handleChange("batchSize")}
             type="number"
@@ -55,7 +58,7 @@ export class SetBatchSize extends Component {
             variant="contained"
             color="secondary"
             onClick={this.back}
-            style={styledButton}
+            className={classes.Button}
           >
             back
           </Button>
@@ -63,7 +66,7 @@ export class SetBatchSize extends Component {
             variant="contained"
             color="primary"
             onClick={this.continue}
-            style={styledButton}
+            className={classes.Button}
           >
             continue
           </Button>
@@ -74,10 +77,11 @@ export class SetBatchSize extends Component {
 }
 
 SetBatchSize.propTypes = {
+  classes: PropTypes.object.isRequired,
   nextStep: PropTypes.func.isRequired,
   prevStep: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired
 };
 
-export default SetBatchSize;
+export default withStyles(styles)(SetBatchSize);

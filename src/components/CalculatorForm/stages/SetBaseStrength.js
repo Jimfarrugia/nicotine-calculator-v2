@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/styles";
 import { Button, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
-const styledGridItem = {
-  padding: "1.5rem"
-};
-const styledButton = {
-  margin: "1rem 0.5rem 0 0"
-};
-const styledTextField = {
-  margin: "0.5rem 0 0 0"
-};
+const styles = () => ({
+  GridItem: {
+    padding: "1.5rem"
+  },
+  Button: {
+    margin: "1rem 0.5rem 0 0"
+  },
+  TextField: {
+    margin: "0.5rem 0 0 0"
+  }
+});
 
 export class SetBaseStrength extends Component {
   continue = e => {
@@ -27,11 +30,11 @@ export class SetBaseStrength extends Component {
   };
 
   render() {
-    const { values, handleChange } = this.props;
+    const { values, handleChange, classes } = this.props;
 
     return (
       <>
-        <Grid item xs={6} style={styledGridItem}>
+        <Grid item xs={6} className={classes.GridItem}>
           <Typography variant="body2" align="left" paragraph>
             <strong>Nicotine Base Strength</strong> refers to the high-strength
             nicotine base that you&apos;ll be mixing into your eliquid.
@@ -40,9 +43,9 @@ export class SetBaseStrength extends Component {
             Enter the strength of your nicotine liquid in mg per mL.
           </Typography>
         </Grid>
-        <Grid item xs={6} style={styledGridItem}>
+        <Grid item xs={6} className={classes.GridItem}>
           <TextField
-            style={styledTextField}
+            className={classes.TextField}
             label="Nicotine Base Strength"
             onChange={handleChange("baseStrength")}
             type="number"
@@ -58,7 +61,7 @@ export class SetBaseStrength extends Component {
             variant="contained"
             color="secondary"
             onClick={this.back}
-            style={styledButton}
+            className={classes.Button}
           >
             back
           </Button>
@@ -66,7 +69,7 @@ export class SetBaseStrength extends Component {
             variant="contained"
             color="primary"
             onClick={this.continue}
-            style={styledButton}
+            className={classes.Button}
           >
             continue
           </Button>
@@ -77,10 +80,11 @@ export class SetBaseStrength extends Component {
 }
 
 SetBaseStrength.propTypes = {
+  classes: PropTypes.object.isRequired,
   nextStep: PropTypes.func.isRequired,
   prevStep: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired
 };
 
-export default SetBaseStrength;
+export default withStyles(styles)(SetBaseStrength);

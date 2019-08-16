@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/styles";
 import { Button, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 
-const styledGridItem = {
-  padding: "1.5rem"
-};
+const styles = () => ({
+  GridItem: {
+    padding: "1.5rem"
+  },
+});
 
 export class Introduction extends Component {
   continue = e => {
@@ -14,12 +17,13 @@ export class Introduction extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <>
-        <Grid item xs={5} style={styledGridItem}>
+        <Grid item xs={5} className={classes.GridItem}>
           <img src="/molecule.svg" alt="nicotine molecule" />
         </Grid>
-        <Grid item xs={7} style={styledGridItem}>
+        <Grid item xs={7} className={classes.GridItem}>
           <Typography variant="body1" align="left" paragraph>
             Easy Nicotine Calculator is a simple tool which calculates how much liquid nicotine to
             add to your eLiquid in order to reach your desired nicotine
@@ -35,7 +39,8 @@ export class Introduction extends Component {
 }
 
 Introduction.propTypes = {
+  classes: PropTypes.object.isRequired,
   nextStep: PropTypes.func.isRequired
 };
 
-export default Introduction;
+export default withStyles(styles)(Introduction);
