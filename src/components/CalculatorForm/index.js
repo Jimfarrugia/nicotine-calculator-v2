@@ -3,6 +3,7 @@ import Introduction from './stages/Introduction';
 import SetBaseStrength from './stages/SetBaseStrength';
 import SetTargetStrength from './stages/SetTargetStrength';
 import SetBatchSize from './stages/SetBatchSize';
+import Results from './stages/Results';
 
 export class CalculatorForm extends Component {
   state = {
@@ -30,6 +31,9 @@ export class CalculatorForm extends Component {
       [input]: e.target.value
     });
   };
+
+  // back to step 0
+  resetStep = () => this.setState({ step: 0 });
 
   render() {
     const {
@@ -76,6 +80,14 @@ export class CalculatorForm extends Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            values={values}
+          />
+        )
+      case 4:
+        return (
+          <Results
+            prevStep={this.prevStep}
+            resetStep={this.resetStep}
             values={values}
           />
         )

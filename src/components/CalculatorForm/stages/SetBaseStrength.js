@@ -20,6 +20,7 @@ export class SetBaseStrength extends Component {
     e.preventDefault();
     this.props.nextStep();
   };
+
   back = e => {
     e.preventDefault();
     this.props.prevStep();
@@ -27,6 +28,7 @@ export class SetBaseStrength extends Component {
 
   render() {
     const { values, handleChange } = this.props;
+
     return (
       <>
         <Grid item xs={6} style={styledGridItem}>

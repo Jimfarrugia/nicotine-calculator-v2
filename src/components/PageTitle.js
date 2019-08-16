@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   pageTitle: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(2),
     lineHeight: 1.5
   }
 }));
@@ -16,7 +16,7 @@ export default function PageTitle() {
       <Typography
         className={classes.pageTitle}
         component="h1"
-        variant="h2"
+        variant="h3"
         align="center"
         color="textPrimary"
         gutterBottom
