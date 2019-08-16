@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Introduction from './Introduction';
+import Introduction from './stages/Introduction';
+import SetBaseStrength from './stages/SetBaseStrength';
 
 export class CalculatorForm extends Component {
   state = {
@@ -47,6 +48,13 @@ export class CalculatorForm extends Component {
         return (
           <Introduction
             nextStep={this.nextStep}
+          />
+        )
+      case 1:
+        return (
+          <SetBaseStrength
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
           />
