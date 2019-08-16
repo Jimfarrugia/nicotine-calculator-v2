@@ -6,7 +6,7 @@ export class CalculatorForm extends Component {
     step: 0,
     baseStrength: 100,
     targetStrength: 6,
-
+    batchSize: 30
   }
 
   // next step
