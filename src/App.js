@@ -1,26 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import Container from "@material-ui/core/Container";
-import { Paper } from "@material-ui/core";
+import { Paper, Grid } from "@material-ui/core";
 import PageTitle from "./components/PageTitle";
-import StepForm from "./components/StepForm";
+import CalculatorForm from "./components/CalculatorForm";
 
-class App extends Component {
-  state = {
-    step: 0
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <PageTitle />
-        <Container maxWidth="sm">
-          <Paper>
-            <StepForm step={this.state.step} />
-          </Paper>
-        </Container>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <PageTitle />
+      <Container maxWidth="sm">
+        <Paper>
+          <Grid container xs={12}>
+            <CalculatorForm />
+          </Grid>
+        </Paper>
+      </Container>
+    </div>
+  );
 }
 
 export default App;
