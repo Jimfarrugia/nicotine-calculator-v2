@@ -7,6 +7,11 @@ const styledGridItem = {
 }
 
 export default class Introduction extends Component {
+  continue = e => {
+    e.preventDefault();
+    this.props.nextStep();
+  }
+
   render() {
     const { values, handleChange } = this.props;
     return (
@@ -21,9 +26,9 @@ export default class Introduction extends Component {
             paragraph
           >
             This is a simple tool which calculates how much liquid nicotine to
-            add to your eLiquid in order to reach your target nicotine strength.
+            add to your eLiquid in order to reach your desired nicotine strength.
           </Typography>
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={this.continue}>
             begin
           </Button>
         </Grid>
