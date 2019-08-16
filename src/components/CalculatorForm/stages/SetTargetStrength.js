@@ -15,11 +15,12 @@ const styledTextField = {
   margin: "0.5rem 0 0 0"
 };
 
-export class SetBaseStrength extends Component {
+export class SetTargetStrength extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
   };
+
   back = e => {
     e.preventDefault();
     this.props.prevStep();
@@ -31,25 +32,24 @@ export class SetBaseStrength extends Component {
       <>
         <Grid item xs={6} style={styledGridItem}>
           <Typography variant="body2" align="left" paragraph>
-            <strong>Nicotine Base Strength</strong> refers to the high-strength
-            nicotine base that you&apos;ll be mixing into your eliquid.
+            <strong>Target Strength</strong> refers to the nicotine strength (in mg) that you
+            would like your eLiquid to be.
           </Typography>
           <Typography variant="body2" align="left" paragraph>
-            Enter the strength of your nicotine liquid in mg per mL.
+            Enter your target nicotine strength in mg per mL.
           </Typography>
         </Grid>
         <Grid item xs={6} style={styledGridItem}>
           <TextField
             style={styledTextField}
-            label="Nicotine Base Strength"
-            onChange={handleChange("baseStrength")}
+            label="Target Strength"
+            onChange={handleChange("targetStrength")}
             type="number"
             variant="outlined"
-            InputLabelProps={{ shrink: true }}
             InputProps={{
               endAdornment: <InputAdornment position="end">mg</InputAdornment>
             }}
-            defaultValue={values.baseStrength}
+            defaultValue={values.targetStrength}
             fullWidth
           />
           <Button
@@ -74,11 +74,11 @@ export class SetBaseStrength extends Component {
   }
 }
 
-SetBaseStrength.propTypes = {
+SetTargetStrength.propTypes = {
   nextStep: PropTypes.func.isRequired,
   prevStep: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   values: PropTypes.object.isRequired
 };
 
-export default SetBaseStrength;
+export default SetTargetStrength;
