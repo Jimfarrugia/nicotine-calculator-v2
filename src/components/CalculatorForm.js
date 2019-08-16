@@ -22,6 +22,11 @@ export class CalculatorForm extends Component {
   };
 
   // handle field change
+  handleChange = input => e => {
+    this.setState({
+      [input]: e.target.value
+    });
+  };
 
   render() {
     const {
@@ -42,6 +47,7 @@ export class CalculatorForm extends Component {
         return (
           <Introduction
             nextStep={this.nextStep}
+            handleChange={this.handleChange}
             values={values}
           />
         )
